@@ -1,18 +1,8 @@
 // For those who want the bleeding edge
 buildscript {
     repositories {
-
-        maven { url 'https://jitpack.io' }
         jcenter()
         mavenCentral()
-        maven {
-            name = "forge"
-            url = "https://maven.minecraftforge.net/"
-        }
-        maven {
-            name = "sonatype"
-            url = "https://oss.sonatype.org/content/repositories/snapshots/"
-        }
     }
     dependencies {
         classpath 'org.ow2.asm:asm:6.0'
@@ -32,6 +22,23 @@ buildscript {
                     details.because 'zero-day-exploits on log4j <2.15.0'
                 }
             }
+        }
+    }
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        jcenter()
+
+        maven { url "https://jitpack.io" }
+        maven {
+            name = "forge"
+            url = "https://maven.minecraftforge.net/"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
     }
 }
